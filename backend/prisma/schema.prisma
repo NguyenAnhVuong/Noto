@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Folder {
+  id        Int      @id @default(autoincrement())
+  name      String
+  author    Author   @relation(fields: [authorId], references: [uid])
+  authorId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Note      Note[]
+
+  @@map("folders")
+}
+
+model Author {
+  uid       String   @id
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Folder    Folder[]
+
+  @@map("authors")
+}
+
+model Note {
+  id        Int      @id @default(autoincrement())
+  content   String
+  folder    Folder   @relation(fields: [folderId], references: [id])
+  folderId  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("notes")
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("notifications")
+}

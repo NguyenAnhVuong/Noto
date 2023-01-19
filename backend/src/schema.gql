@@ -1,0 +1,102 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Author {
+  Folder: Folder
+  createdAt: DateTime!
+  name: String!
+  uid: String!
+  updatedAt: DateTime!
+}
+
+input CreateAuthorInput {
+  name: String!
+  uid: String!
+}
+
+input CreateFolderInput {
+  name: String!
+}
+
+input CreateNoteInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateTestInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Folder {
+  author: Author!
+  createdAt: String!
+  id: Int!
+  name: String!
+  notes: Note
+}
+
+type Mutation {
+  createAuthor(createAuthorInput: CreateAuthorInput!): Author!
+  createFolder(createFolderInput: CreateFolderInput!): Folder!
+  createNote(createNoteInput: CreateNoteInput!): Note!
+  createTest(createTestInput: CreateTestInput!): Test!
+  removeAuthor(id: Int!): Author!
+  removeFolder(id: Int!): Folder!
+  removeNote(id: Int!): Note!
+  removeTest(id: Int!): Test!
+  updateAuthor(updateAuthorInput: UpdateAuthorInput!): Author!
+  updateFolder(updateFolderInput: UpdateFolderInput!): Folder!
+  updateNote(updateNoteInput: UpdateNoteInput!): Note!
+  updateTest(updateTestInput: UpdateTestInput!): Test!
+}
+
+type Note {
+  content: String!
+  createdAt: DateTime!
+  id: Int!
+  updatedAt: DateTime!
+}
+
+type Query {
+  author(id: Int!): Author!
+  folder(id: Int!): Folder!
+  folders: [Folder!]!
+  hello: String!
+  note(id: Int!): Note!
+  test(id: Int!): Test!
+}
+
+type Test {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateAuthorInput {
+  id: Int!
+  name: String
+  uid: String
+}
+
+input UpdateFolderInput {
+  id: Int!
+  name: String
+}
+
+input UpdateNoteInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateTestInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
