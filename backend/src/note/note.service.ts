@@ -1,15 +1,21 @@
+import { PrismaService } from './../prisma/prisma.service';
 import { Injectable } from '@nestjs/common';
 import { CreateNoteInput } from './dto/create-note.input';
 import { UpdateNoteInput } from './dto/update-note.input';
 
 @Injectable()
 export class NoteService {
+  constructor(private readonly prisma: PrismaService) {}
   create(createNoteInput: CreateNoteInput) {
     return 'This action adds a new note';
   }
 
-  findAll() {
-    return `This action returns all note`;
+  async findAll(folderId: number) {
+    return await this.prisma.note.findMany({
+      where: {
+        folderId,
+      },
+    });
   }
 
   findOne(id: number) {

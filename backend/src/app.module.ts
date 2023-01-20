@@ -11,7 +11,6 @@ import { AuthorModule } from './author/author.module';
 import { FolderModule } from './folder/folder.module';
 import { NoteModule } from './note/note.module';
 import { PrismaModule } from './prisma/prisma.module';
-import { TestModule } from './test/test.module';
 
 @Module({
   imports: [
@@ -25,7 +24,6 @@ import { TestModule } from './test/test.module';
     FolderModule,
     NoteModule,
     AuthorModule,
-    TestModule,
   ],
   controllers: [AppController],
   providers: [AppService, FirebaseAuthStrategy],

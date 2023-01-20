@@ -16,4 +16,25 @@ const createFolderMutation = gql`
   }
 `;
 
-export { resgisterMutation, createFolderMutation };
+const updateFolderMutation = gql`
+  mutation updateFolder($id: Int!, $name: String!) {
+    updateFolder(updateFolderInput: { id: $id, name: $name }) {
+      updatedAt
+    }
+  }
+`;
+
+const removeFolderMutation = gql`
+  mutation removeFolder($id: Int!) {
+    removeFolder(id: $id) {
+      updatedAt
+    }
+  }
+`;
+
+export {
+  resgisterMutation,
+  createFolderMutation,
+  updateFolderMutation,
+  removeFolderMutation,
+};
