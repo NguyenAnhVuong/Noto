@@ -7,7 +7,7 @@ export interface User {
 }
 
 export interface Folder {
-  id: string;
+  id: number;
   name: string;
 }
 

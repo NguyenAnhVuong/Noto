@@ -39,7 +39,7 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center mt-20">
-      <h2 className="text-3xl mb-5">Welcome to Noto</h2>
+      <span className="text-3xl mb-5">Welcome to Noto</span>
       <Button
         className="bg-[#4285f4] h-[42px] flex w-48 items-center p-[1px] border-none rounded-sm"
         onClick={handleLoginWithGoogle}

@@ -1,8 +1,8 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
-import { NoteService } from './note.service';
-import { Note } from './entities/note.entity';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CreateNoteInput } from './dto/create-note.input';
 import { UpdateNoteInput } from './dto/update-note.input';
+import { Note } from './entities/note.entity';
+import { NoteService } from './note.service';
 
 @Resolver(() => Note)
 export class NoteResolver {
@@ -11,11 +11,6 @@ export class NoteResolver {
   @Mutation(() => Note)
   createNote(@Args('createNoteInput') createNoteInput: CreateNoteInput) {
     return this.noteService.create(createNoteInput);
-  }
-
-  @Query(() => [Note], { name: 'note' })
-  findAll() {
-    return this.noteService.findAll();
   }
 
   @Query(() => Note, { name: 'note' })

@@ -8,10 +8,12 @@ export class Folder {
   id: number;
   @Field(() => String)
   name: string;
-  @Field(() => String)
-  createdAt: string;
+  @Field(() => Date)
+  createdAt: Date;
+  @Field(() => Date)
+  updatedAt: Date;
   @Field(() => Author)
   author: Author;
-  @Field(() => Note, { nullable: true })
-  notes?: [Note];
+  @Field(() => [Note], { nullable: true })
+  notes?: Note[];
 }
