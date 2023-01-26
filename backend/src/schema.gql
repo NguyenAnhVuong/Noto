@@ -77,7 +77,7 @@ input UpdateFolderInput {
 }
 
 input UpdateNoteInput {
-  content: String
+  content: String!
   folderId: Int
   id: Int!
 }
