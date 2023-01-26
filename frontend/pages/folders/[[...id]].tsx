@@ -21,11 +21,11 @@ export default function Folder() {
           <UserMenu />
         </div>
         <Row className="mt-24 shadow-md">
-          <Col span={8}>
+          <Col span={6}>
             <FolderList folders={data.folders} id={router.query.id} />
           </Col>
           {router.query.id && router.query.id.length && (
-            <Col span={16}>
+            <Col span={18}>
               <NoteList id={router.query.id} />
             </Col>
           )}

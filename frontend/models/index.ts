@@ -1,9 +1,9 @@
 export interface User {
-  uid: string;
-  email: string;
-  displayName: string;
-  photoURL: string;
-  auth: any;
+  uid?: string;
+  email?: string;
+  displayName?: string;
+  photoURL?: string;
+  auth?: any;
 }
 
 export interface Folder {
@@ -12,7 +12,7 @@ export interface Folder {
 }
 
 export interface Note {
-  id: string;
+  id: number;
   content: string;
-  folderId: string;
+  updatedAt?: Date;
 }

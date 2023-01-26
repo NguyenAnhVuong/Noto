@@ -22,4 +22,13 @@ const getFolder = gql`
   }
 `;
 
-export { getFolders, getFolder };
+const getNote = gql`
+  query note($id: Int!) {
+    note(id: $id) {
+      id
+      content
+    }
+  }
+`;
+
+export { getFolders, getFolder, getNote };
