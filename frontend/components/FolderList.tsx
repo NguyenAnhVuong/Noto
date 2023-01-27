@@ -83,7 +83,7 @@ const FolderList = ({ folders, id }: Props) => {
           <span className="font-semibold text-white">Folders</span>
           <NewFolder />
         </div>
-        <List className="overflow-y-auto h-[528px]">
+        <List className="overflow-y-auto h-[556px]">
           {folders &&
             folders.length > 0 &&
             folders.map((folder: Folder) => (

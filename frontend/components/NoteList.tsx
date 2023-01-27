@@ -51,7 +51,7 @@ const NoteList = ({ id }: Props) => {
     });
   };
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading height="[600px]" />;
   if (error) return <p>Error :</p>;
 
   const handleAddNote = async () => {
@@ -70,18 +70,9 @@ const NoteList = ({ id }: Props) => {
 
   const getTitle = (content: string) => {
     if (content == '<p></p>\n' || !content) return 'Empty';
-    if (content.indexOf('\n') < content.length - 5) {
-      if (content.indexOf('\n') > 28)
-        return `${content.substring(content.indexOf('>') + 1, 28)}`;
-      return `${content.substring(
-        content.indexOf('>') + 1,
-        content.indexOf('\n') - 1
-      )}`;
-    }
-    return `${content.substring(
-      content.indexOf('>') + 1,
-      content.length > 28 ? 28 : content.indexOf('</')
-    )}`;
+    let string = content.substring(0, content.indexOf('</'));
+    const title = string.substring(string.lastIndexOf('>') + 1, string.length);
+    return title;
   };
 
   return (
@@ -98,7 +89,7 @@ const NoteList = ({ id }: Props) => {
             />
           </Tooltip>
         </div>
-        <List className="overflow-y-auto h-[528px]">
+        <List className="overflow-y-auto h-[556px]">
           {data.folder.notes.map((note: Note) => (
             <List.Item
               className={
@@ -118,7 +109,7 @@ const NoteList = ({ id }: Props) => {
                 <div className="">
                   <div className="flex justify-between">
                     <div
-                      className="font-semibold"
+                      className="font-semibold w-48 truncate"
                       dangerouslySetInnerHTML={{
                         __html: getTitle(note.content),
                       }}
@@ -130,7 +121,9 @@ const NoteList = ({ id }: Props) => {
                       okText="Yes"
                       cancelText="No"
                     >
-                      <AiFillDelete size={20} />
+                      <Tooltip title="Delete">
+                        <AiFillDelete size={20} />
+                      </Tooltip>
                     </Popconfirm>
                   </div>
                   <div className="">
@@ -142,7 +135,7 @@ const NoteList = ({ id }: Props) => {
           ))}
         </List>
       </Col>
-      <Col span={16} className="h-[560px] overflow-y-auto">
+      <Col span={16} className="h-[600px] overflow-y-auto">
         {id && id.length && id[2] && <NoteEditor />}
       </Col>
     </Row>

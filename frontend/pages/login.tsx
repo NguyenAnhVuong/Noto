@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { useMutation } from '@apollo/client';
 import { resgisterMutation } from '@/graphql-client/mutations';
 import { useEffect } from 'react';
+import { getFolders } from '@/graphql-client/queries';
 
 const Login = () => {
   const auth = getAuth();
@@ -29,6 +30,7 @@ const Login = () => {
               uid: user.uid,
               name: user.displayName,
             },
+            refetchQueries: [{ query: getFolders }],
           });
         } catch (e) {}
         router.push('/folders');
