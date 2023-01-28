@@ -8,6 +8,7 @@ import { useMutation } from '@apollo/client';
 import { resgisterMutation } from '@/graphql-client/mutations';
 import { useEffect } from 'react';
 import { getFolders } from '@/graphql-client/queries';
+import Loading from '@/components/Loading';
 
 const Login = () => {
   const auth = getAuth();
@@ -20,7 +21,7 @@ const Login = () => {
     const res = await signInWithPopup(auth, provider);
   };
 
-  const [register, dataMutation] = useMutation(resgisterMutation);
+  const [register, { data, loading, error }] = useMutation(resgisterMutation);
   useEffect(() => {
     const callAPI = async () => {
       if (user && user.uid) {
@@ -38,6 +39,13 @@ const Login = () => {
     };
     callAPI();
   }, [user]);
+
+  if (loading) {
+    return <Loading />;
+  }
+  if (error) {
+    return <div>Error</div>;
+  }
 
   return (
     <div className="flex flex-col items-center mt-20">
