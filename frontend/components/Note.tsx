@@ -92,7 +92,7 @@ export const NoteEditor = () => {
     },
   });
 
-  if (loading || !note) return <Loading />;
+  if (loading || !note) return <Loading height="600px" />;
   if (error) return <p>Error:</p>;
 
   return (
