@@ -14,13 +14,13 @@ export default function Folder() {
   if (loading) return <Loading />;
   if (error) return <p>Error :</p>;
   return (
-    <div className="flex justify-center mt-9">
+    <div className="flex justify-center mt-9 ">
       <div className="w-[1200px] flex flex-col relative">
         <span className="text-4xl text-center">Noto</span>
         <div className="absolute right-0 top-12">
           <UserMenu />
         </div>
-        <Row className="mt-24 shadow-md">
+        <Row className="mt-24 shadow-md rounded-lg overflow-hidden">
           <Col span={6}>
             <FolderList folders={data.folders} id={router.query.id} />
           </Col>
