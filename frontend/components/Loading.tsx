@@ -5,10 +5,11 @@ type Props = {
   height?: string;
 };
 
-const Loading = ({ height = 'screen' }: Props) => {
+const Loading = ({ height = '' }: Props) => {
   return (
     <div
-      className={`h-${height} w-full bg-[#0000000d] flex justify-center items-center`}
+      className={'w-full bg-[#0000000d] flex justify-center items-center'}
+      style={{ height: height ? height : '100vh' }}
     >
       <Spin />
     </div>

@@ -39,7 +39,7 @@ const AuthContainer = ({ children }: any) => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [auth]);
   return <>{loading ? <Loading /> : children}</>;
 };
 
