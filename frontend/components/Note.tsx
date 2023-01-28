@@ -51,7 +51,7 @@ export const NoteEditor = () => {
     if (typingTimeoutRef.current) {
       clearTimeout(typingTimeoutRef.current);
     }
-    if (note.content !== content && content.length !== 8) {
+    if (note.content !== content) {
       typingTimeoutRef.current = setTimeout(async () => {
         await updateNote({
           variables: {

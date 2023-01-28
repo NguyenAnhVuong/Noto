@@ -25,7 +25,7 @@ const Login = () => {
     const callAPI = async () => {
       if (user && user.uid) {
         try {
-          register({
+          await register({
             variables: {
               uid: user.uid,
               name: user.displayName,

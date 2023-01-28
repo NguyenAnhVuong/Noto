@@ -51,7 +51,7 @@ const NoteList = ({ id }: Props) => {
     });
   };
 
-  if (loading) return <Loading height="[600px]" />;
+  if (loading) return <Loading height="600px" />;
   if (error) return <p>Error :</p>;
 
   const handleAddNote = async () => {
