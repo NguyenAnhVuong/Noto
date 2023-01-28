@@ -5,4 +5,6 @@ import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 export class UpdateFolderInput extends PartialType(CreateFolderInput) {
   @Field(() => Int)
   id: number;
+  @Field(() => String)
+  name: string;
 }

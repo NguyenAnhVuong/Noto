@@ -30,18 +30,55 @@ export class FolderService {
       where: {
         authorId: user.uid,
       },
+      orderBy: {
+        updatedAt: 'desc',
+      },
     });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} folder`;
+  async findOne(id: number, userId: string) {
+    return await this.prisma.folder.findFirst({
+      where: {
+        id,
+        authorId: userId,
+      },
+    });
   }
 
-  update(id: number, updateFolderInput: UpdateFolderInput) {
-    return `This action updates a #${id} folder`;
+  async update(
+    id: number,
+    updateFolderInput: UpdateFolderInput,
+    authorId: string,
+  ) {
+    const folder = await this.prisma.folder.findFirst({
+      where: {
+        name: updateFolderInput.name,
+        authorId,
+      },
+    });
+    if (folder) {
+      throw new ForbiddenException('This folder already exists');
+    }
+    return await this.prisma.folder.update({
+      where: {
+        id,
+      },
+      data: {
+        name: updateFolderInput.name,
+      },
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} folder`;
+  async remove(id: number) {
+    await this.prisma.note.deleteMany({
+      where: {
+        folderId: id,
+      },
+    });
+    return await this.prisma.folder.delete({
+      where: {
+        id,
+      },
+    });
   }
 }

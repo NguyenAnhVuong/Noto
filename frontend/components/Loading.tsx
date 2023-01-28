@@ -1,11 +1,16 @@
 import { Spin } from 'antd';
 import React from 'react';
 
-type Props = {};
+type Props = {
+  height?: string;
+};
 
-const Loading = (props: Props) => {
+const Loading = ({ height = '' }: Props) => {
   return (
-    <div className="h-screen w-full bg-[#0000000d] flex justify-center items-center">
+    <div
+      className={'w-full bg-[#0000000d] flex justify-center items-center'}
+      style={{ height: height ? height : '100vh' }}
+    >
       <Spin />
     </div>
   );
